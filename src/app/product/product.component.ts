@@ -22,11 +22,11 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.queryParams.subscribe(params => {
       this.id = params['id']; // (+) converts string 'id' to a number
-      console.log(this.id);
-      console.log(params);
+      // console.log(this.id);
+      // console.log(params);
     });
 
-    this.productService.getProduct(this.id).subscribe(
+    this.productService.getProduct().subscribe(
       data => {
         this.product = data;
       },
