@@ -12,26 +12,26 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ProductComponent implements OnInit {
   product: Product;
-  id: String;
-  private sub: any;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
-
   }
 
   ngOnInit() {
-    this.sub = this.route.queryParams.subscribe(params => {
-      this.id = params['id']; // (+) converts string 'id' to a number
-      // console.log(this.id);
-      // console.log(params);
+    this.route.queryParams.subscribe(params => {
+      if (params['id'] != null && params['id'].length > 1) {
+        return this.getProductSubscribe(params['id']);
+      }
     });
+  }
 
-    this.productService.getProduct().subscribe(
+  getProductSubscribe(id: String): Product {
+    this.productService.getProduct(id).subscribe(
       data => {
         this.product = data;
       },
       error => console.log(error)
     );
+    return this.product;
   }
 
 }

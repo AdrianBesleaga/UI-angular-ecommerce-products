@@ -7,12 +7,12 @@ import {ProductComponent} from './product/product.component';
 import {RouterModule, Routes} from '@angular/router';
 
 import {enableProdMode} from '@angular/core';
-
 enableProdMode();
 
 
 const routes: Routes = [
-  { path: 'product', component: ProductComponent }
+  { path: 'product', component: ProductComponent },
+  { path: 'product/:id', component: ProductComponent }
 ];
 
 @NgModule({
