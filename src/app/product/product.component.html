@@ -1,17 +1,79 @@
-<mat-menu #appMenu="matMenu">
-  <button mat-menu-item>Settings</button>
-  <button mat-menu-item>Help</button>
-</mat-menu>
+<mat-toolbar color="primary" layout-align="center center">
+  <mat-toolbar-row>
+    <span class="text-center center">{{product?.itemAttributes.title}}</span>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-<button mat-icon-button [matMenuTriggerFor]="appMenu">
-  <mat-icon>more_vert</mat-icon>
-</button>
+<div class="product-container">
+  <!--<h1 class="title text-center">{{product?.itemAttributes.title}}</h1>-->
+  <img class="product-image" src="{{product?.largeImage.url}}">
+  <h2 class="text-center center">{{product?.itemAttributes.listPrice.formattedPrice}}</h2>
+  <a class="text-center center" href="{{product?.detailPageURL}}" target="_blank" rel="nofollow">Product Link</a>
+  <p class="text-center center">Product id : {{product?.asin}}</p>
+  <p class="center">{{product?.itemAttributes.feature}}</p>
+  <a class="text-center center" href="{{product?.customerReviews.iframeURL}}" target="_blank" rel="nofollow">Reviews</a>
+  <p class="text-center center">Category : {{product?.browseNodes.browseNode[0].name}}</p>
+  <p class="text-center center">salesRank : {{product?.salesRank}}</p>
+</div>
+<!--<mat-grid-list cols="2" rowHeight="2:1">-->
+<!--<mat-grid-tile>1</mat-grid-tile>-->
+<!--<mat-grid-tile>2</mat-grid-tile>-->
+<!--<mat-grid-tile>3</mat-grid-tile>-->
+<!--<mat-grid-tile>4</mat-grid-tile>-->
+<!--</mat-grid-list>-->
 
-<p>{{product?.itemAttributes.title}}</p>
-<p>Product id : {{product?.asin}}</p>
-<a href="{{product?.detailPageURL}}" target="_blank" rel="nofollow">Product Link</a>
-<img src="{{product?.largeImage}}">
-<p>Details : {{product?.itemAttributes.feature}}</p>
+<mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-tile
+    *ngFor="let tile of tiles"
+    [colspan]="tile.cols"
+    [rowspan]="tile.rows"
+    [style.background]="tile.color">
+    {{tile.text}}
+  </mat-grid-tile>
+</mat-grid-list>
 
-<button mat-button>Click me!</button>
-<mat-icon>home</mat-icon>
+
+<!--<mat-card>-->
+  <!--<mat-card-content>-->
+    <!--<h2 class="example-h2">Slider configuration</h2>-->
+
+    <!--<section class="example-section">-->
+      <!--<label class="example-margin">Color:</label>-->
+      <!--<mat-radio-group [(ngModel)]="color">-->
+        <!--<mat-radio-button class="example-margin" value="primary">-->
+          <!--Primary-->
+        <!--</mat-radio-button>-->
+        <!--<mat-radio-button class="example-margin" value="accent">-->
+          <!--Accent-->
+        <!--</mat-radio-button>-->
+        <!--<mat-radio-button class="example-margin" value="warn">-->
+          <!--Warn-->
+        <!--</mat-radio-button>-->
+      <!--</mat-radio-group>-->
+    <!--</section>-->
+
+    <!--<section class="example-section">-->
+      <!--<mat-checkbox class="example-margin" [(ngModel)]="checked">Checked</mat-checkbox>-->
+    <!--</section>-->
+
+    <!--<section class="example-section">-->
+      <!--<mat-checkbox class="example-margin" [(ngModel)]="disabled">Disabled</mat-checkbox>-->
+    <!--</section>-->
+  <!--</mat-card-content>-->
+<!--</mat-card>-->
+
+<!--<mat-card class="result">-->
+  <!--<mat-card-content>-->
+    <!--<h2 class="example-h2">Result</h2>-->
+
+    <!--<section class="example-section">-->
+      <!--<mat-slide-toggle-->
+        <!--class="example-margin"-->
+        <!--[color]="color"-->
+        <!--[checked]="checked"-->
+        <!--[disabled]="disabled">-->
+        <!--Slide me!-->
+      <!--</mat-slide-toggle>-->
+    <!--</section>-->
+  <!--</mat-card-content>-->
+<!--</mat-card>-->

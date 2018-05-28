@@ -1,0 +1,30 @@
+/*http://angushop.danurstrap.com/#/shop/product1*/
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 10px;
+}
+
+.product-container{
+  width: 80%;
+  margin: auto;
+}
+
+.title{
+  font-size: 1.5em;
+}
+
+.product-image{
+  width: 400px;
+  display: block;
+  margin: 0 auto;
+}
