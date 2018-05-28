@@ -1,5 +1,17 @@
+<mat-menu #appMenu="matMenu">
+  <button mat-menu-item>Settings</button>
+  <button mat-menu-item>Help</button>
+</mat-menu>
+
+<button mat-icon-button [matMenuTriggerFor]="appMenu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+
 <p>{{product?.itemAttributes.title}}</p>
 <p>Product id : {{product?.asin}}</p>
 <a href="{{product?.detailPageURL}}" target="_blank" rel="nofollow">Product Link</a>
 <img src="{{product?.largeImage}}">
-<p>Details : {{product.itemAttributes.feature}}</p>
+<p>Details : {{product?.itemAttributes.feature}}</p>
+
+<button mat-button>Click me!</button>
+<mat-icon>home</mat-icon>
