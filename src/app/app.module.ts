@@ -10,13 +10,13 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material';
 import 'hammerjs';
 
-import {enableProdMode} from '@angular/core';
-enableProdMode();
+// import {enableProdMode} from '@angular/core';
+// enableProdMode();
 
 const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full'},
   { path: 'products', component: ProductComponent },
-  { path: 'product/:id', component: ProductComponent }
+  { path: 'products/:id', component: ProductComponent }
 ];
 
 @NgModule({

@@ -8,6 +8,7 @@
   <mat-card-content>
 
     <section *ngIf="product" class="product-container">
+      <h1 class="title text-center">{{product?.itemAttributes.title}}</h1>
       <img class="product-image" src="{{product?.largeImage?.url}}">
       <h2 class="text-center center">{{product?.itemAttributes?.listPrice?.formattedPrice}}</h2>
       <a class="text-center center" href="{{product?.detailPageURL}}" target="_blank" rel="nofollow">Product Link</a>
@@ -20,6 +21,7 @@
     </section>
 
     <section *ngFor="let product of products" class="product-container">
+      <h1 class="title text-center">{{product?.itemAttributes.title}}</h1>
       <img class="product-image" src="{{product?.largeImage?.url}}">
       <h2 class="text-center center">{{product?.itemAttributes?.listPrice?.formattedPrice}}</h2>
       <a class="text-center center" href="{{product?.detailPageURL}}" target="_blank" rel="nofollow">Product Link</a>

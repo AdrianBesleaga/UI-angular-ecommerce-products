@@ -41,7 +41,6 @@ import {
   MatTreeModule,
 } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
-import {Observable} from 'rxjs';
 
 @NgModule({
   exports: [
@@ -116,12 +115,6 @@ export class ProductComponent implements OnInit {
         return this.getProducts();
       }
     });
-
-    // this.route.queryParams.subscribe(params => {
-    //   if (params['id']) {
-    //     return this.getProductSubscribe(params['id']);
-    //   }
-    // });
   }
 
   getProduct(id: String): Product {
