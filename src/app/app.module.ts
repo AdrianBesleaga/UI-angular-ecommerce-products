@@ -14,7 +14,8 @@ import {enableProdMode} from '@angular/core';
 enableProdMode();
 
 const routes: Routes = [
-  { path: 'product', component: ProductComponent },
+  { path: '', redirectTo: 'products', pathMatch: 'full'},
+  { path: 'products', component: ProductComponent },
   { path: 'product/:id', component: ProductComponent }
 ];
 

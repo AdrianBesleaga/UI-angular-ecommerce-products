@@ -41,6 +41,7 @@ import {
   MatTreeModule,
 } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
+import {Observable} from 'rxjs';
 
 @NgModule({
   exports: [
@@ -83,16 +84,19 @@ import {CdkTableModule} from '@angular/cdk/table';
   ]
 })
 
-export class DemoMaterialModule {}
+export class DemoMaterialModule {
+}
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css'],
+  styleUrls: ['./product.component.scss'],
   providers: [ProductService],
 })
 export class ProductComponent implements OnInit {
+  products: Product[];
   product: Product;
+
   tiles = [
     {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
     {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
@@ -104,21 +108,38 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      if (params['id'] != null && params['id'].length > 1) {
-        return this.getProductSubscribe(params['id']);
+    this.route.params.subscribe(params => {
+      console.log(params.id);
+      if (params['id']) {
+        return this.getProduct(params['id']);
+      } else {
+        return this.getProducts();
       }
     });
+
+    // this.route.queryParams.subscribe(params => {
+    //   if (params['id']) {
+    //     return this.getProductSubscribe(params['id']);
+    //   }
+    // });
   }
 
-  getProductSubscribe(id: String): Product {
-    this.productService.getProduct(id).subscribe(
-      data => {
+  getProduct(id: String): Product {
+    this.productService.getProduct(id).subscribe(data => {
         this.product = data;
       },
       error => console.log(error)
     );
     return this.product;
+  }
+
+  getProducts(): Product[] {
+    this.productService.getProducts().subscribe((products: Product[]) => {
+        this.products = products;
+      },
+      error => console.log(error)
+    );
+    return this.products;
   }
 
 }
