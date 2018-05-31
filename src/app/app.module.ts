@@ -16,7 +16,7 @@ enableProdMode();
 const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full'},
   { path: 'products', component: ProductComponent },
-  { path: 'product/:id', component: ProductComponent }
+  { path: 'products/:id', component: ProductComponent }
 ];
 
 @NgModule({

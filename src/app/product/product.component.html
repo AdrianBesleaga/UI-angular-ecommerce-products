@@ -1,126 +1,67 @@
-<mat-toolbar color="primary" layout-align="center center">
-  <mat-toolbar-row>
-    <span class="text-center center">{{product?.itemAttributes.title}}</span>
-  </mat-toolbar-row>
-</mat-toolbar>
+<div class="container-fluid">
 
-<mat-card>
-  <mat-card-content>
+  <section *ngIf="product">
+  <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{product?.largeImage?.url}}" alt="Product Image">
+  <div class="card-body">
+  <h5 class="card-title">{{product?.itemAttributes.title}}</h5>
+  <p class="card-text">{{product?.itemAttributes?.feature | slice:0:1}}</p>
+  <a href="{{product?.detailPageURL}}" target="_blank" rel="nofollow" class="btn btn-primary">Product Link</a>
+  </div>
+  </div>
+  </section>
 
-    <section *ngIf="product" class="product-container">
-      <img class="product-image" src="{{product?.largeImage?.url}}">
-      <h2 class="text-center center">{{product?.itemAttributes?.listPrice?.formattedPrice}}</h2>
-      <a class="text-center center" href="{{product?.detailPageURL}}" target="_blank" rel="nofollow">Product Link</a>
-      <p class="text-center center">Product id : {{product?.asin}}</p>
-      <p class="center">{{product?.itemAttributes?.feature}}</p>
-      <a class="text-center center" href="{{product?.customerReviews?.iframeURL}}" target="_blank" rel="nofollow">Reviews</a>
-      <p class="text-center center">Category : {{product?.browseNodes?.browseNode[0]?.name}}</p>
-      <p class="text-center center">salesRank : {{product?.salesRank}}</p>
-      <a [routerLink]="['/products', 'B077C637J5']">Random Product</a>
-    </section>
+  <!--<section *ngFor="let product of products" class="product-container">-->
+  <!--<img class="product-image" src="{{product?.largeImage?.url}}">-->
+  <!--<h2 class="text-center center">{{product?.itemAttributes?.listPrice?.formattedPrice}}</h2>-->
+  <!--<a class="text-center center" href="{{product?.detailPageURL}}" target="_blank" rel="nofollow">Product Link</a>-->
+  <!--<p class="text-center center">Product id : {{product?.asin}}</p>-->
+  <!--<p class="center">{{product?.itemAttributes?.feature}}</p>-->
+  <!--<a class="text-center center" href="{{product?.customerReviews?.iframeURL}}" target="_blank"-->
+  <!--rel="nofollow">Reviews</a>-->
+  <!--<p class="text-center center">Category : {{product?.browseNodes?.browseNode[0]?.name}}</p>-->
+  <!--<p class="text-center center">salesRank : {{product?.salesRank}}</p>-->
+  <!--<a [routerLink]="['/products', 'B077C637J5']">Random Product</a>-->
+  <!--</section>-->
 
-    <section *ngFor="let product of products" class="product-container">
-      <img class="product-image" src="{{product?.largeImage?.url}}">
-      <h2 class="text-center center">{{product?.itemAttributes?.listPrice?.formattedPrice}}</h2>
-      <a class="text-center center" href="{{product?.detailPageURL}}" target="_blank" rel="nofollow">Product Link</a>
-      <p class="text-center center">Product id : {{product?.asin}}</p>
-      <p class="center">{{product?.itemAttributes?.feature}}</p>
-      <a class="text-center center" href="{{product?.customerReviews?.iframeURL}}" target="_blank" rel="nofollow">Reviews</a>
-      <p class="text-center center">Category : {{product?.browseNodes?.browseNode[0]?.name}}</p>
-      <p class="text-center center">salesRank : {{product?.salesRank}}</p>
-      <a [routerLink]="['/products', 'B077C637J5']">Random Product</a>
-    </section>
-  </mat-card-content>
-</mat-card>
-<!--<mat-grid-list cols="2" rowHeight="2:1">-->
-<!--<mat-grid-tile>1</mat-grid-tile>-->
-<!--<mat-grid-tile>2</mat-grid-tile>-->
-<!--<mat-grid-tile>3</mat-grid-tile>-->
-<!--<mat-grid-tile>4</mat-grid-tile>-->
-<!--</mat-grid-list>-->
+  <div class="row" >
+    <!--<section *ngFor="let product of products">-->
+      <div class="col-md-2 row-eq-height" *ngFor="let product of products; let i = index">
+        <div class="card" >
+          <div class="card-image">
+            <img class="card-product-image" src="{{product?.largeImage?.url}}" alt="Product Image">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{product?.itemAttributes.title}}</h5>
+            <!--<p class="card-text">{{product?.itemAttributes?.feature | slice:0:1}}</p>-->
+          </div>
+          <a href="{{product?.detailPageURL}}" target="_blank" rel="nofollow" class="btn long btn-primary">Product Link</a>
+        </div>
+      </div>
+    <!--</section>-->
+  </div>
 
-<mat-grid-list cols="4" rowHeight="100px">
-  <mat-grid-tile
-    *ngFor="let tile of tiles"
-    [colspan]="tile.cols"
-    [rowspan]="tile.rows"
-    [style.background]="tile.color">
-    {{tile.text}}
-  </mat-grid-tile>
-</mat-grid-list>
+  <!--<mat-grid-list cols="2" rowHeight="2:1">-->
+  <!--<mat-grid-tile>1</mat-grid-tile>-->
+  <!--<mat-grid-tile>2</mat-grid-tile>-->
+  <!--<mat-grid-tile>3</mat-grid-tile>-->
+  <!--<mat-grid-tile>4</mat-grid-tile>-->
+  <!--</mat-grid-list>-->
 
-<!--<div class="product-card">-->
-<!--<div class="product-card-thumbnail">-->
-<!--<a href="#"><img src="https://placehold.it/180x180"/></a>-->
-<!--</div>-->
-<!--<h2 class="product-card-title"><a href="#">Product Name</a></h2>-->
-<!--<span class="product-card-desc">Product Description</span>-->
-<!--<span class="product-card-price">$9.99</span><span class="product-card-sale">$12.99</span>-->
-<!--<div class="product-card-colors">-->
-<!--<button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>-->
-<!--<button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>-->
-<!--<button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>-->
-<!--<button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>-->
-<!--</div>-->
-<!--</div>-->
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile
+      *ngFor="let tile of tiles"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+      [style.background]="tile.color">
+      {{tile.text}}
+    </mat-grid-tile>
+  </mat-grid-list>
 
-<!--<div class="product-card">-->
-<!--<div class="product-card-thumbnail">-->
-<!--<a href="#"><img src="https://placehold.it/180x180"/></a>-->
-<!--</div>-->
-<!--<h2 class="product-card-title"><a href="#">Product Name</a></h2>-->
-<!--<span class="product-card-desc">Product Description</span>-->
-<!--<span class="product-card-price">$9.99</span><span class="product-card-sale">$12.99</span>-->
-<!--<div class="product-card-colors">-->
-<!--<button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>-->
-<!--<button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>-->
-<!--<button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>-->
-<!--<button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>-->
-<!--</div>-->
-<!--</div>-->
+  <!--<div class="row">-->
+    <!--<div class="col-12 col-md-8">.col-12 .col-md-8</div>-->
+    <!--<div class="col-6 col-md-4">.col-6 .col-md-4</div>-->
+  <!--</div>-->
 
 
-<!--<mat-card>-->
-<!--<mat-card-content>-->
-<!--<h2 class="example-h2">Slider configuration</h2>-->
-
-<!--<section class="example-section">-->
-<!--<label class="example-margin">Color:</label>-->
-<!--<mat-radio-group [(ngModel)]="color">-->
-<!--<mat-radio-button class="example-margin" value="primary">-->
-<!--Primary-->
-<!--</mat-radio-button>-->
-<!--<mat-radio-button class="example-margin" value="accent">-->
-<!--Accent-->
-<!--</mat-radio-button>-->
-<!--<mat-radio-button class="example-margin" value="warn">-->
-<!--Warn-->
-<!--</mat-radio-button>-->
-<!--</mat-radio-group>-->
-<!--</section>-->
-
-<!--<section class="example-section">-->
-<!--<mat-checkbox class="example-margin" [(ngModel)]="checked">Checked</mat-checkbox>-->
-<!--</section>-->
-
-<!--<section class="example-section">-->
-<!--<mat-checkbox class="example-margin" [(ngModel)]="disabled">Disabled</mat-checkbox>-->
-<!--</section>-->
-<!--</mat-card-content>-->
-<!--</mat-card>-->
-
-<!--<mat-card class="result">-->
-<!--<mat-card-content>-->
-<!--<h2 class="example-h2">Result</h2>-->
-
-<!--<section class="example-section">-->
-<!--<mat-slide-toggle-->
-<!--class="example-margin"-->
-<!--[color]="color"-->
-<!--[checked]="checked"-->
-<!--[disabled]="disabled">-->
-<!--Slide me!-->
-<!--</mat-slide-toggle>-->
-<!--</section>-->
-<!--</mat-card-content>-->
-<!--</mat-card>-->
+</div>

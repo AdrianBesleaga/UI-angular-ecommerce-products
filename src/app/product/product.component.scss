@@ -1,32 +1,56 @@
-/*http://angushop.danurstrap.com/#/shop/product1*/
-
-.example-h2 {
-  margin: 10px;
-}
-
-.example-section {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  height: 60px;
-}
-
-.example-margin {
-  margin: 10px;
-}
-
-.product-container{
-  width: 80%;
+///*http://angushop.danurstrap.com/#/shop/product1*/
+//
+//.example-h2 {
+//  margin: 10px;
+//}
+//
+//.example-section {
+//  display: flex;
+//  align-content: center;
+//  align-items: center;
+//  height: 60px;
+//}
+//
+//.example-margin {
+//  margin: 10px;
+//}
+//
+//.product-container{
+//  width: 80%;
+//  margin: auto;
+//}
+//
+//.title{
+//  font-size: 1.5em;
+//}
+//
+//.product-image{
+//  width: 400px;
+//  display: block;
+//  margin: 0 auto;
+//}
+//
+.card-product-image {
+  max-width: 250px;
+  max-height: 300px;
   margin: auto;
 }
 
-.title{
-  font-size: 1.5em;
+.card-image {
+  height: 300px;
+  margin: auto;
+  width: auto;
 }
 
-.product-image{
-  width: 400px;
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+  min-width: 300px;
+}
+
+.btn.long{
   display: block;
-  margin: 0 auto;
 }
-
