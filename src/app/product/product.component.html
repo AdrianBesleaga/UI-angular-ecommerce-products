@@ -27,12 +27,13 @@
   <div class="row" >
     <!--<section *ngFor="let product of products">-->
       <div class="col-md-2 row-eq-height" *ngFor="let product of products; let i = index">
-        <div class="card" >
+        <div class="card" style="width: 20rem;">
           <div class="card-image">
-            <img class="card-product-image" src="{{product?.largeImage?.url}}" alt="Product Image">
+            <img class="card-product-image align-middle" src="{{product?.largeImage?.url}}" alt="Product Image">
           </div>
           <div class="card-body">
-            <h5 class="card-title">{{product?.itemAttributes.title}}</h5>
+            <!--<p class="card-title">{{product?.itemAttributes?.title}}</p>-->
+            <p class="card-text text-center font-weight-bold">{{product?.itemAttributes?.listPrice?.formattedPrice || 'no price'}}</p>
             <!--<p class="card-text">{{product?.itemAttributes?.feature | slice:0:1}}</p>-->
           </div>
           <a href="{{product?.detailPageURL}}" target="_blank" rel="nofollow" class="btn long btn-primary">Product Link</a>
