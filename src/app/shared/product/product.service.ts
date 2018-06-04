@@ -11,8 +11,10 @@ const httpOptions = {
 @Injectable()
 export class ProductService {
   private productUrl: String = environment.apiUrl + 'products';
+  private categoryUrl: String = environment.apiUrl + 'categories'
   private product: Observable<Product>;
   private products: Observable<Product[]>;
+  private categories: Observable<any[]>;
 
   constructor(private http: HttpClient) {
   }
@@ -25,5 +27,10 @@ export class ProductService {
   getProducts(): Observable<Product[]> {
     this.products = this.http.get<Product[]>(`${this.productUrl}`);
     return this.products;
+  }
+
+  getCategories(): Observable<any[]> {
+    this.categories = this.http.get<any[]>(`${this.categoryUrl}`);
+    return this.categories;
   }
 }

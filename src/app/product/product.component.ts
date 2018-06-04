@@ -41,46 +41,10 @@ import {
   MatTreeModule,
 } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
+import {Title} from '@angular/platform-browser';
 
 @NgModule({
-  exports: [
-    CdkTableModule,
-    MatAutocompleteModule,
-    MatBadgeModule,
-    MatBottomSheetModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatStepperModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatDividerModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatTreeModule,
-  ]
+  exports: []
 })
 
 export class DemoMaterialModule {
@@ -93,25 +57,24 @@ export class DemoMaterialModule {
   providers: [ProductService],
 })
 export class ProductComponent implements OnInit {
-  products: Product[];
-  product: Product;
+  public products: Product[];
+  public product: Product;
+  public categories: any[];
+  public loading: boolean;
 
-  tiles = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
-
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+  constructor(private productService: ProductService, private route: ActivatedRoute, private titleService: Title ) {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.route.params.subscribe(params => {
       if (params['id']) {
-        return this.getProduct(params['id']);
+        this.titleService.setTitle('Product details');
+        this.getProduct(params['id']);
       } else {
-        return this.getProducts();
+        this.titleService.setTitle('Products');
+        this.getCategories();
+        this.getProducts();
       }
     });
   }
@@ -132,6 +95,16 @@ export class ProductComponent implements OnInit {
       error => console.log(error)
     );
     return this.products;
+  }
+
+  getCategories(): any[] {
+    this.productService.getCategories().subscribe((categories: any[]) => {
+        this.categories = categories;
+        console.log(categories);
+      },
+      error => console.log(error)
+    );
+    return this.categories;
   }
 
 }

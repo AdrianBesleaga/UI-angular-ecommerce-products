@@ -1,15 +1,10 @@
 <div class="container-fluid">
 
-  <section *ngIf="product">
-  <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{product?.largeImage?.url}}" alt="Product Image">
-  <div class="card-body">
-  <h5 class="card-title">{{product?.itemAttributes.title}}</h5>
-  <p class="card-text">{{product?.itemAttributes?.feature | slice:0:1}}</p>
-  <a href="{{product?.detailPageURL}}" target="_blank" rel="nofollow" class="btn btn-primary">Product Link</a>
+  <div class="row" *ngIf="!products && !product" >
+    <div class="col-md-12">
+      <div class="loader text-center align-middle center-block"></div>
+    </div>
   </div>
-  </div>
-  </section>
 
   <!--<section *ngFor="let product of products" class="product-container">-->
   <!--<img class="product-image" src="{{product?.largeImage?.url}}">-->
@@ -24,78 +19,101 @@
   <!--<a [routerLink]="['/products', 'B077C637J5']">Random Product</a>-->
   <!--</section>-->
 
-  <div class="row" >
+  <div class="row" *ngIf="products">
     <!--<section *ngFor="let product of products">-->
-      <div class="col-md-2 row-eq-height" *ngFor="let product of products; let i = index">
-        <div class="card" style="width: 20rem;">
-          <div class="card-image">
-            <img class="card-product-image align-middle" src="{{product?.largeImage?.url}}" alt="Product Image">
-          </div>
-          <div class="card-body">
-            <!--<p class="card-title">{{product?.itemAttributes?.title}}</p>-->
-            <p class="card-text text-center font-weight-bold">{{product?.itemAttributes?.listPrice?.formattedPrice || 'no price'}}</p>
-            <!--<p class="card-text">{{product?.itemAttributes?.feature | slice:0:1}}</p>-->
-          </div>
-          <a href="{{product?.detailPageURL}}" target="_blank" rel="nofollow" class="btn long btn-primary">Product Link</a>
+    <div class="col-md-2 row-eq-height" *ngFor="let product of products">
+      <div class="card" style="width: 20rem;">
+        <div class="card-image">
+          <img class="card-product-image align-middle" src="{{product?.largeImage?.url}}" alt="Product Image">
         </div>
+        <div class="card-body">
+          <!--<p class="card-title">{{product?.itemAttributes?.title}}</p>-->
+          <p class="card-text text-center font-weight-bold">
+            {{product?.itemAttributes?.listPrice?.formattedPrice || 'no price'}}
+          </p>
+          <!--<p class="card-text">{{product?.itemAttributes?.feature | slice:0:1}}</p>-->
+        </div>
+        <a href="/products/{{product?.asin}}" target="_blank" rel="nofollow" class="btn long btn-primary">Product
+          Link</a>
       </div>
+    </div>
     <!--</section>-->
   </div>
 
-    <!--<section *ngIf="product" class="product-container">-->
-      <!--<h1 class="title text-center">{{product?.itemAttributes.title}}</h1>-->
-      <!--<img class="product-image" src="{{product?.largeImage?.url}}">-->
-      <!--<h2 class="text-center center">{{product?.itemAttributes?.listPrice?.formattedPrice}}</h2>-->
-      <!--<a class="text-center center" href="{{product?.detailPageURL}}" target="_blank" rel="nofollow">Product Link</a>-->
-      <!--<p class="text-center center">Product id : {{product?.asin}}</p>-->
-      <!--<p class="center">{{product?.itemAttributes?.feature}}</p>-->
-      <!--<a class="text-center center" href="{{product?.customerReviews?.iframeURL}}" target="_blank" rel="nofollow">Reviews</a>-->
-      <!--<p class="text-center center">Category : {{product?.browseNodes?.browseNode[0]?.name}}</p>-->
-      <!--<p class="text-center center">salesRank : {{product?.salesRank}}</p>-->
-      <!--<a [routerLink]="['/products', 'B077C637J5']">Random Product</a>-->
-    <!--</section>-->
+  <section *ngIf="products">
+    <div *ngFor="let category of categories;">
+      <a href="https://adrian-products.herokuapp.com/api/products/category/{{category.name}}" target="_blank">{{category.name}}</a>
+    </div>
+  </section>
 
-    <!--<section *ngFor="let product of products" class="product-container">-->
-      <!--<h1 class="title text-center">{{product?.itemAttributes.title}}</h1>-->
-      <!--<img class="product-image" src="{{product?.largeImage?.url}}">-->
-      <!--<h2 class="text-center center">{{product?.itemAttributes?.listPrice?.formattedPrice}}</h2>-->
-      <!--<a class="text-center center" href="{{product?.detailPageURL}}" target="_blank" rel="nofollow">Product Link</a>-->
-      <!--<p class="text-center center">Product id : {{product?.asin}}</p>-->
-      <!--<p class="center">{{product?.itemAttributes?.feature}}</p>-->
-      <!--<a class="text-center center" href="{{product?.customerReviews?.iframeURL}}" target="_blank" rel="nofollow">Reviews</a>-->
-      <!--<p class="text-center center">Category : {{product?.browseNodes?.browseNode[0]?.name}}</p>-->
-      <!--<p class="text-center center">salesRank : {{product?.salesRank}}</p>-->
-      <!--<a [routerLink]="['/products', 'B077C637J5']">Random Product</a>-->
-    <!--</section>-->
+  <section *ngIf="product">
+    <div class="row">
+      <div class="col-md-12 ">
 
-<!--<mat-grid-list cols="2" rowHeight="2:1">-->
-<!--<mat-grid-tile>1</mat-grid-tile>-->
-<!--<mat-grid-tile>2</mat-grid-tile>-->
-<!--<mat-grid-tile>3</mat-grid-tile>-->
-<!--<mat-grid-tile>4</mat-grid-tile>-->
-<!--</mat-grid-list>-->
+        <h5 class="card-title text-center">{{product?.itemAttributes.title}}</h5>
+        <p class="text-center">{{product?.itemAttributes?.feature | slice:0:1}}</p>
+        <!--<img class="align-middle" src="{{product?.largeImage?.url}}" alt="Product Image">-->
+        <div class="col-md-12 text-center">
+          <a class="btn btn-primary text-center align-middle center-block" href="{{product?.detailPageURL}}"
+             target="_blank" rel="nofollow">Product Link</a>
+        </div>
 
-  <!--<mat-grid-list cols="2" rowHeight="2:1">-->
-  <!--<mat-grid-tile>1</mat-grid-tile>-->
-  <!--<mat-grid-tile>2</mat-grid-tile>-->
-  <!--<mat-grid-tile>3</mat-grid-tile>-->
-  <!--<mat-grid-tile>4</mat-grid-tile>-->
-  <!--</mat-grid-list>-->
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-slide-to="0" class="active"></li>
+            <li data-slide-to="1"></li>
+            <li data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+              <img class="d-block img-fluid" src="{{product?.largeImage?.url}}" alt="First slide">
+            </div>
+            <div *ngFor="let imageSets of product.imageSets">
+              <div *ngIf="imageSets.imageSet">
+                <div class="carousel-item" *ngFor="let imageSet of imageSets.imageSet">
+                  <img class="d-block img-fluid" src="{{imageSet?.largeImage?.url}}" alt="Product Image">
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <mat-grid-list cols="4" rowHeight="100px">
-    <mat-grid-tile
-      *ngFor="let tile of tiles"
-      [colspan]="tile.cols"
-      [rowspan]="tile.rows"
-      [style.background]="tile.color">
-      {{tile.text}}
-    </mat-grid-tile>
-  </mat-grid-list>
 
-  <!--<div class="row">-->
-    <!--<div class="col-12 col-md-8">.col-12 .col-md-8</div>-->
-    <!--<div class="col-6 col-md-4">.col-6 .col-md-4</div>-->
-  <!--</div>-->
+  <!--<section *ngIf="product" class="product-container">-->
+  <!--<h1 class="title text-center">{{product?.itemAttributes.title}}</h1>-->
+  <!--<img class="product-image" src="{{product?.largeImage?.url}}">-->
+  <!--<h2 class="text-center center">{{product?.itemAttributes?.listPrice?.formattedPrice}}</h2>-->
+  <!--<a class="text-center center" href="{{product?.detailPageURL}}" target="_blank" rel="nofollow">Product Link</a>-->
+  <!--<p class="text-center center">Product id : {{product?.asin}}</p>-->
+  <!--<p class="center">{{product?.itemAttributes?.feature}}</p>-->
+  <!--<a class="text-center center" href="{{product?.customerReviews?.iframeURL}}" target="_blank" rel="nofollow">Reviews</a>-->
+  <!--<p class="text-center center">Category : {{product?.browseNodes?.browseNode[0]?.name}}</p>-->
+  <!--<p class="text-center center">salesRank : {{product?.salesRank}}</p>-->
+  <!--<a [routerLink]="['/products', 'B077C637J5']">Random Product</a>-->
+  <!--</section>-->
 
+  <!--<section *ngFor="let product of products" class="product-container">-->
+  <!--<h1 class="title text-center">{{product?.itemAttributes.title}}</h1>-->
+  <!--<img class="product-image" src="{{product?.largeImage?.url}}">-->
+  <!--<h2 class="text-center center">{{product?.itemAttributes?.listPrice?.formattedPrice}}</h2>-->
+  <!--<a class="text-center center" href="{{product?.detailPageURL}}" target="_blank" rel="nofollow">Product Link</a>-->
+  <!--<p class="text-center center">Product id : {{product?.asin}}</p>-->
+  <!--<p class="center">{{product?.itemAttributes?.feature}}</p>-->
+  <!--<a class="text-center center" href="{{product?.customerReviews?.iframeURL}}" target="_blank" rel="nofollow">Reviews</a>-->
+  <!--<p class="text-center center">Category : {{product?.browseNodes?.browseNode[0]?.name}}</p>-->
+  <!--<p class="text-center center">salesRank : {{product?.salesRank}}</p>-->
+  <!--<a [routerLink]="['/products', 'B077C637J5']">Random Product</a>-->
+  <!--</section>-->
 
 </div>

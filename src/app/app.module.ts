@@ -14,7 +14,8 @@ import 'hammerjs';
 // enableProdMode();
 
 const routes: Routes = [
-  { path: '', redirectTo: 'products', pathMatch: 'full'},
+  // { path: '', redirectTo: 'products', pathMatch: 'full'},
+  { path: '', component: ProductComponent },
   { path: 'products', component: ProductComponent },
   { path: 'products/:id', component: ProductComponent }
 ];
@@ -26,14 +27,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
     HttpClientModule,
-    MatNativeDateModule,
-    ReactiveFormsModule,
-    DemoMaterialModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
   entryComponents: [AppComponent],
