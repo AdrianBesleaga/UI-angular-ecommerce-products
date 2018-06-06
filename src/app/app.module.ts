@@ -9,6 +9,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material';
 import 'hammerjs';
+import { CategoriesComponent } from './categories/categories.component';
+import { CategoryDirective } from './shared/directives/category.directive';
 
 // import {enableProdMode} from '@angular/core';
 // enableProdMode();
@@ -17,13 +19,16 @@ const routes: Routes = [
   // { path: '', redirectTo: 'products', pathMatch: 'full'},
   { path: '', component: ProductComponent },
   { path: 'products', component: ProductComponent },
+  { path: 'categories', component: CategoriesComponent },
   { path: 'products/:id', component: ProductComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent
+    ProductComponent,
+    CategoriesComponent,
+    CategoryDirective
   ],
   imports: [
     BrowserModule,

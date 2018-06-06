@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // apiUrl: 'http://localhost:8088/'
-  apiUrl: 'https://adrian-products.herokuapp.com/api/'
+  apiUrl: 'http://localhost:8088/api/'
+  // apiUrl: 'https://adrian-products.herokuapp.com/api/'
 };
 
 /*
